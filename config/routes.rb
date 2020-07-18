@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :forms
   root 'welcome#index'
   devise_for :users
   get '/auditions', to: 'auditions#info'

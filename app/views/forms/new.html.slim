@@ -1,0 +1,13 @@
+h1 Fill out an Audition Form
+
+= form_with model: @form, local: true do |f|
+  .form_group
+    = f.label "Full Name"
+    = f.text_field :name, placeholder: "John Smith"
+  .form_group
+    = f.label :pronouns, "Your prefered pronouns"
+    = f.text_field :pronouns
+  .form_group
+    = f.label :phone, "Phone number"
+    = f.text_field :phone
+  
