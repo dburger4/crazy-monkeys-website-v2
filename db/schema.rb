@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_030418) do
+ActiveRecord::Schema.define(version: 2020_07_18_054824) do
 
   create_table "forms", force: :cascade do |t|
     t.string "name"
@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 2020_07_18_030418) do
     t.text "absent_semesters"
     t.text "experience"
     t.text "skills"
-    t.text "conflicts"
+    t.text "availability"
     t.text "heard_from"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
   end
 

@@ -7,6 +7,10 @@ class FormsController < ApplicationController
 
     def create
       @form = Form.new(form_params)
+      @form.user = current_user
+      @form.email = current_user.email
+      @form.save
+      redirect_to root_path
     end
 
     private
@@ -14,7 +18,7 @@ class FormsController < ApplicationController
     def form_params
       params.require(:form).permit(:name, :pronouns, :phone, :major, :graduation,
                                    :absent_semesters, :experience, :skills,
-                                   :conflicts, :heard_from)
+                                   :availability, :heard_from)
     end
 
 end
