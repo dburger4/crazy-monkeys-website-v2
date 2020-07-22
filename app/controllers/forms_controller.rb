@@ -10,7 +10,24 @@ class FormsController < ApplicationController
       @form.user = current_user
       @form.email = current_user.email
       @form.save
-      redirect_to root_path
+      flash[:notice] = "Audition Form saved"
+      redirect_to auditions_info_path
+    end
+
+    def edit
+      @form = Form.find(params[:id])
+    end
+
+    def update
+      @form = Form.find(params[:id])
+
+      if @form.update(form_params)
+        flash[:notice] = "Audition Form updated and saved"
+        redirect_to auditions_info_path
+      else
+        flash[:error] = "Could not update and save Audition Form"
+        redirect_to auditions_info_path
+      end
     end
 
     private
