@@ -1,0 +1,27 @@
+nav.navbar.navbar-expand-md.navbar-static-top.navbar-dark.bg-dark
+  img.d-inline-block.align-top src="#{asset_path('cm-logo-small.png')}" width="30" height="30" alt=""
+  = link_to "The Crazy Monkeys", root_path, class: "navbar-brand ml-4"
+  button.navbar-toggler  type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+  
+  .navbar-collapse.collapse#navbarSupportedContent
+    ul.navbar-nav.mr-auto
+      li.nav-item 
+        = link_to "About", "#", class: "nav-link"
+      li.nav-item
+        = link_to "Members", "#", class: "nav-link"
+      li.nav-item
+        = link_to "Auditions", auditions_info_path, class: "nav-link"
+    ul.navbar-nav.ml-auto
+      - if user_signed_in?
+        - if !!current_user.form
+          li.nav-item
+            = link_to 'Edit Audition Form', "#", class: "nav-link"
+          li.nav-item
+            = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link"
+      - else
+        li.nav-item
+          = link_to 'Sign in', new_user_session_path, class: "nav-link"
+        li.nav-item
+          = link_to 'Sign up', new_user_registration_path, class: "nav-link"
+
