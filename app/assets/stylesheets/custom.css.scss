@@ -1,8 +1,9 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+
 body {
+  padding-top: 50px;
   font-family: 'Hind', sans-serif;
-  padding-top: 70px;
 }
 
 .navbar {
@@ -15,9 +16,23 @@ body {
   transform: translatex(-50%);
 }
 
-footer {
-  width: 100%;
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  min-height: 100%;
+}
+
+.content-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.footer {
+  margin-top: -50px;
   background-color: black;
-  height: 75px;
+  height: 50px;
 }
 

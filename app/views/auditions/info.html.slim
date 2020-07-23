@@ -1,6 +1,6 @@
 h1.text-center Fall 2020 Auditions
 .text-center
-  - if current_user.form.present?
+  - if current_user&.form.present?
     = link_to "Click here to edit your Audition Form", forms_edit_path(current_user.form.id), class: 'btn btn-primary'
 
   - else

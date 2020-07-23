@@ -18,8 +18,8 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
           - if !!current_user.form
             li.nav-item
               = link_to 'Edit Audition Form', forms_edit_path(current_user.form.id), class: "nav-link"
-            li.nav-item
-              = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link"
+          li.nav-item
+            = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link"
         - else
           li.nav-item
             = link_to 'Sign in', new_user_session_path, class: "nav-link"
