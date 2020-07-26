@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'slim-rails'
+gem 'hirb'
 
 
 # Use Active Storage variant

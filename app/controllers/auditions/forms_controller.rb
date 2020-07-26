@@ -1,4 +1,4 @@
-class FormsController < ApplicationController
+class Auditions::FormsController < ApplicationController
     before_action :authenticate_user!
 
     def new

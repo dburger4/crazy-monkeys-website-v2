@@ -4,8 +4,4 @@ class AuditionsController < ApplicationController
 
   end
 
-  def new
-
-  end
-
 end
