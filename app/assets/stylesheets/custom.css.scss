@@ -4,6 +4,18 @@
 body {
   padding-top: 50px;
   font-family: 'Hind', sans-serif;
+  background-image: asset_url("crazy-monkeys-home-background-blue.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.page {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 6px 5px 5px black;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 .navbar {
