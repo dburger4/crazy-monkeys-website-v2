@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :form
+
+  validates :email, format: { with: /@purdue.edu/, message: "must be a valid Purdue email" }
 end
