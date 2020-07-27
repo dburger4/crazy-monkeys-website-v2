@@ -15,11 +15,13 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
           = link_to "Members", "#", class: "nav-link"
       ul.navbar-nav.ml-auto
         - if user_signed_in?
-          - if !!current_user.form
-            li.nav-item
-              = link_to 'Edit Audition Form', edit_form_path(current_user.form.id), class: "nav-link"
-          li.nav-item
-            = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "nav-link"
+          li.nav-item.dropdown
+            = link_to "#{current_user.email}", '#', class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
+            .dropdown-menu aria-labelledby="navbarDropdown"
+              - if !!current_user.form
+                = link_to 'View Audition Form', '#', class: "dropdown-item"
+                = link_to 'Edit Audition Form', edit_form_path(current_user.form.id), class: "dropdown-item"
+              = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "dropdown-item"
         - else
           li.nav-item
             = link_to 'Sign in', new_user_session_path, class: "nav-link"

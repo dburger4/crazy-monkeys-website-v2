@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
 
-  has_one :form
+  has_one :form, dependent: :destroy
 
   validates :email, format: { with: /@purdue.edu/, message: "must be a valid Purdue email" }
 end

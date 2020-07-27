@@ -15,7 +15,12 @@ class FormsController < ApplicationController
     end
 
     def edit
-      @form = Form.find(params[:id])
+      if params[:id].to_i == current_user.form.id
+        @form = Form.find(params[:id])
+      else
+        flash[:error] = "You can only edit your own Audition Form"
+        @form = Form.find(current_user.form.id)
+      end
     end
 
     def update
@@ -27,6 +32,15 @@ class FormsController < ApplicationController
       else
         flash[:error] = "Could not update and save Audition Form"
         redirect_to auditions_info_path
+      end
+    end
+
+    def show
+      if params[:id].to_i == current_user.form.id
+        @form = Form.find(params[:id])
+      else
+        flash[:error] = "You can only view your own Audition Form"
+        @form = Form.find(current_user.form.id)
       end
     end
 
