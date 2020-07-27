@@ -15,11 +15,16 @@ class FormsController < ApplicationController
     end
 
     def edit
-      if params[:id].to_i == current_user.form.id
-        @form = Form.find(params[:id])
+      if current_user.form.present?
+        if params[:id].to_i == current_user.form.id
+          @form = Form.find(params[:id])
+        else
+          flash[:error] = "You can only edit your own Audition Form"
+          @form = Form.find(current_user.form.id)
+        end
       else
-        flash[:error] = "You can only edit your own Audition Form"
-        @form = Form.find(current_user.form.id)
+        flash[:error] = "You have not submitted an Audition Form yet"
+        redirect_to auditions_info_path
       end
     end
 
