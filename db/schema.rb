@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_045213) do
+ActiveRecord::Schema.define(version: 2020_07_31_041530) do
+
+  create_table "auditions", force: :cascade do |t|
+    t.string "location"
+    t.datetime "datetime"
+    t.string "semester"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "forms", force: :cascade do |t|
     t.string "name"
@@ -27,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_07_26_045213) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
+    t.integer "audition_id"
+    t.index "\"auditions_id\"", name: "index_forms_on_auditions_id"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
   end
 

@@ -1,5 +1,7 @@
 class FormsController < ApplicationController
     before_action :authenticate_user!
+    before_action :validate_form_id, only: [:edit, :view]
+    before_action :retrieve_active_auditions, only: [:new, :edit]
 
     def new
       @form = Form.new
@@ -9,23 +11,16 @@ class FormsController < ApplicationController
       @form = Form.new(form_params)
       @form.user = current_user
       @form.email = current_user.email
-      @form.save
-      flash[:notice] = "Audition Form saved"
+      if @form.save
+        flash[:notice] = "Audition Form saved, you are now registered for The Crazy Monkeys Auditions!"
+      else
+        flash[:error] = "Audition Form could not be saved"
+      end
       redirect_to auditions_info_path
     end
 
     def edit
-      if current_user.form.present?
-        if params[:id].to_i == current_user.form.id
-          @form = Form.find(params[:id])
-        else
-          flash[:error] = "You can only edit your own Audition Form"
-          @form = Form.find(current_user.form.id)
-        end
-      else
-        flash[:error] = "You have not submitted an Audition Form yet"
-        redirect_to auditions_info_path
-      end
+      
     end
 
     def update
@@ -33,28 +28,35 @@ class FormsController < ApplicationController
 
       if @form.update(form_params)
         flash[:notice] = "Audition Form updated and saved"
-        redirect_to auditions_info_path
       else
         flash[:error] = "Could not update and save Audition Form"
-        redirect_to auditions_info_path
       end
+      redirect_to auditions_info_path
     end
 
     def show
-      if params[:id].to_i == current_user.form.id
-        @form = Form.find(params[:id])
-      else
-        flash[:error] = "You can only view your own Audition Form"
-        @form = Form.find(current_user.form.id)
-      end
+      
     end
 
     private
 
+    def validate_form_id
+      if params[:id].to_i == current_user.form&.id
+        @form = Form.find(params[:id])
+      else
+        flash[:error] = "You can not perform that action"
+        redirect_to auditions_info_path
+      end
+    end
+
     def form_params
-      params.require(:form).permit(:name, :pronouns, :phone, :major, :graduation,
+      params.require(:form).permit(:audition_id, :name, :pronouns, :phone, :major, :graduation,
                                    :absent_semesters, :experience, :skills,
                                    :availability, :heard_from)
+    end
+
+    def retrieve_active_auditions
+      @auditions = Audition.active
     end
 
 end

@@ -2,6 +2,16 @@
   .col
     = form_with model: @form, local: true do |f|
       .form-group
+        h6.mb-0 Choose an audition time:
+        .text-danger.mt-0 Please consider choosing a slot with the fewest registered to help with social distancing
+        - @auditions.each_with_index do |audition, index|
+          div
+            = f.radio_button :audition_id, audition.id, value: audition.id, id: "option#{index}", class: "m-2", required: true
+            = f.label :audition_id, value: audition.id, for: "option#{index}", class: "border border-secondary p-1" do
+              = "#{audition.datetime.strftime("%A, %b %e at %l%P")}"
+              br = "location: #{audition.location}"
+              = "#{audition.num_forms} people registered"
+      .form-group
         = f.label "Full prefered name", class: "col-form-label"
         = f.text_field :name, class: "form-control", required: true
       .form-group
@@ -38,5 +48,6 @@
         small.form-text.text-muted Posters, Word-of-mouth, Social Media, etc.
       .form-group
         = f.submit "Save Audition Form", class: "btn btn-success btn-block"
+
 
 
