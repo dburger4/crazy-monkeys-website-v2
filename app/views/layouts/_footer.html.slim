@@ -1,5 +1,7 @@
 footer.footer
-  .justify-content-center.d-flex.pt-2
+  .justify-content-center.d-flex
+    = mail_to 'thecrazymonkeyscomedy@gmail.com', 'Contact us: thecrazymonkeyscomedy@gmail.com', target: :_blank, class: "text-white text-center"
+  .justify-content-center.d-flex
     = link_to 'https://www.instagram.com/thecrazmonkeys/?hl=en', target: :_blank
       = image_tag src=asset_path('instagram.png'), size: '30', class: "mx-1"
     = link_to 'https://twitter.com/thecrazmonkeys?lang=en', target: :_blank

@@ -1,6 +1,7 @@
 nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
   .container
-    img.d-inline-block.align-top src="#{asset_path('cm-logo-small.png')}" width="30" height="30" alt=""
+    = link_to root_path
+      img.d-inline-block.align-top src="#{asset_path('cm-logo-small.png')}" width="30" height="30" alt=""
     = link_to "THE CRAZY MONKEYS", root_path, class: "navbar-brand ml-4"
     button.navbar-toggler  type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
       span.navbar-toggler-icon
@@ -20,7 +21,8 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             .dropdown-menu aria-labelledby="navbarDropdown"
               - if !!current_user.form
                 = link_to 'View Audition Form', form_path(current_user.form.id), class: "dropdown-item"
-                = link_to 'Edit Audition Form', edit_form_path(current_user.form.id), class: "dropdown-item"
+              - else
+                = link_to 'Register for Auditions', new_form_path, class: "dropdown-item"
               = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "dropdown-item"
         - else
           li.nav-item

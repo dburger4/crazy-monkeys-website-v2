@@ -3,7 +3,7 @@
     = form_with model: @form, local: true do |f|
       .form-group
         h6.mb-0 Choose an audition time:
-        .text-danger.mt-0 Please consider choosing a slot with the fewest registered to help with social distancing
+        .text-danger.mt-0.font-italic Please consider choosing a slot with the fewest registered to help with social distancing
         - @auditions.each_with_index do |audition, index|
           div
             = f.radio_button :audition_id, audition.id, value: audition.id, id: "option#{index}", class: "m-2", required: true

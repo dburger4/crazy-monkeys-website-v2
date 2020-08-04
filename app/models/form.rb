@@ -1,5 +1,5 @@
 class Form < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
     
 
   def audition

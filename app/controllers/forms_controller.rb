@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
     before_action :authenticate_user!
-    before_action :validate_form_id, only: [:edit, :show]
+    before_action :validate_form_id, only: [:edit, :show, :destroy]
     before_action :retrieve_active_auditions, only: [:new, :edit]
 
     def new
@@ -36,6 +36,12 @@ class FormsController < ApplicationController
 
     def show
       
+    end
+
+    def destroy
+      @form.destroy
+      flash[:notice] = "Audition form and registration removed"
+      redirect_to auditions_info_path
     end
 
     private
