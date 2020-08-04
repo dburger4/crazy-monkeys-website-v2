@@ -10,7 +10,8 @@
             = f.label :audition_id, value: audition.id, for: "option#{index}", class: "border border-secondary p-1" do
               = "#{audition.datetime.strftime("%A, %b %e at %l%P")}"
               br = "location: #{audition.location}"
-              = "#{audition.num_forms} people registered"
+              - if audition.num_forms == 1 ? word = "person" : word = "people" 
+                = "#{audition.num_forms} #{word} registered"
       .form-group
         = f.label "Full prefered name", class: "col-form-label"
         = f.text_field :name, class: "form-control", required: true

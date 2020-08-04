@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
     before_action :authenticate_user!
-    before_action :validate_form_id, only: [:edit, :view]
+    before_action :validate_form_id, only: [:edit, :show]
     before_action :retrieve_active_auditions, only: [:new, :edit]
 
     def new

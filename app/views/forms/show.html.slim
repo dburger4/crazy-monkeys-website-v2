@@ -1,3 +1,11 @@
 .page.container.col-lg-6  
-  h2 Fall 2020 Audition Form
+  .row.justify-content-center
+    h2 = "#{@form.name}'s #{@form.audition.semester} Audition Form"
+  div
+    strong Selected audition slot:
+  div = @form.audition.datetime.strftime("%A, %b %e at %l%P")
+  div = "Location: #{@form.audition.location}"
+  
+  - if @form.audition.num_forms == 1 ? word = "person" : word = "people" 
+    div = "#{@form.audition.num_forms} #{word} registered"
   

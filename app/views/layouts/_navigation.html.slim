@@ -19,7 +19,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             = link_to "#{current_user.email}", '#', class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
             .dropdown-menu aria-labelledby="navbarDropdown"
               - if !!current_user.form
-                = link_to 'View Audition Form', '#', class: "dropdown-item"
+                = link_to 'View Audition Form', form_path(current_user.form.id), class: "dropdown-item"
                 = link_to 'Edit Audition Form', edit_form_path(current_user.form.id), class: "dropdown-item"
               = link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "dropdown-item"
         - else
