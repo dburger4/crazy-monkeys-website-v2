@@ -1,9 +1,25 @@
-.page.container.col-lg-6
+.page-dark.container.col-lg-6
   h1.text-center = "#{@auditions.first.semester} Auditions"
+  
+  .card.text-white.bg-danger style="max-width: 35rem;"
+    .card-header COVID-19 Changes to Auditions
+    .card-body
+      h5.card-title Please read: 
+      | text
   .text-center
     - if current_user&.form.present?
       = link_to "Click here to edit your Audition Form", edit_form_path(current_user.form.id), class: 'btn btn-primary'
-
     - else
       = link_to "Click here to register for auditions", new_form_path, class: 'btn btn-primary'
+  table.table.table-dark.table-striped
+    thead
+      th style="width: 33%" scope="col" = "Date"
+      th style="width: 33%" scope="col" = "Time"
+      th style="width: 34%" scope="col" = "Location"
+    tbody
+      - @auditions.each do |audition|
+        tr
+          td = audition.datetime.strftime("%A, %B %e")
+          td = "#{audition.datetime.strftime("%l")}" + " to " + "#{(audition.datetime + 50.minutes).strftime("%l:%M%P")}"
+          td = audition.location
 

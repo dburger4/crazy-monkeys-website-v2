@@ -8,7 +8,7 @@
           div
             = f.radio_button :audition_id, audition.id, value: audition.id, id: "option#{index}", class: "m-2", required: true
             = f.label :audition_id, value: audition.id, for: "option#{index}", class: "border border-secondary p-1 radio-inline control-label" do
-              = "#{audition.datetime.strftime("%A, %b %e at %l%P")}"
+              = "#{audition.datetime.strftime("%A, %b %e from %l") + " to " + "#{(audition.datetime + 50.minutes).strftime("%l:%M%P")}"}"
               br = "location: #{audition.location}"
               - if audition.num_forms == 1 ? word = "person" : word = "people" 
                 = "#{audition.num_forms} #{word} registered"
