@@ -1,0 +1,15 @@
+<p>Thanks for signing up, <%= @email %>!</p> 
+<br>
+<p>You are one step closer to registering for Crazy Monkeys Auditions. Next, you should:</p>
+<p>1. Confirm your email with the button below</p>
+<p>2. Log in to our website</p>
+<p>3. Fill out and submit an Audition Registration Form found on the auditions page </p>
+<br>
+<p>Confirm your email with the link below:</p>
+<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "btn btn-success" %>
+<br>
+<br>
+<div>
+<h4>The Crazy Monkeys</h4>
+</div>
+<h5 class="font-italic">Purdue's Premiere Improv Troupe<h5>
