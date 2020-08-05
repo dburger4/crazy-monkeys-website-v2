@@ -1,5 +1,5 @@
-.page.container
-  h1.text-center Fall 2020 Auditions
+.page.container.col-lg-6
+  h1.text-center = "#{@auditions.first.semester} Auditions"
   .text-center
     - if current_user&.form.present?
       = link_to "Click here to edit your Audition Form", edit_form_path(current_user.form.id), class: 'btn btn-primary'

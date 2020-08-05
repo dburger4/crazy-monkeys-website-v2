@@ -10,8 +10,39 @@ body {
   background-attachment: fixed;
 }
 
+#subtitle {
+  color: white;
+  font-style: italic;
+  letter-spacing: 0.13em;
+  text-align: center;
+  word-spacing: 0.3em;
+  text-shadow:  1px 2px 3px black;
+}
+
+@media screen and (min-width: 601px) {
+  #subtitle {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #subtitle {
+    font-size: 20px;
+  }
+}
+
 .page {
   background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 3px 5px 2px black;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.page-dark {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  
   border-radius: 5px;
   box-shadow: 2px 3px 5px 2px black;
   padding: 15px;

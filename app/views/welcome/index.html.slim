@@ -1,3 +1,14 @@
-.page.container
-  h1 Welcome#index
-  p poster will go here
+h5#subtitle Purdue University's Premiere Improv Group
+.page-dark.container.col-lg-6
+
+  h1 Welcome to our new website!
+  h5 
+    | Our shows will be performed for an extremely limited audience due to COVID-19,
+    |  but we will be livestreaming all of them on our Youtube and on this website!
+    |  more information will be coming soon, this website and our social media will be updated with the latest information
+  br
+  h5 
+    | We are hosting auditions in early September! Online registration is required for those interested,
+    | Please visit the Auditions page for more information on how you can register for auditions
+  .d-flex.justify-content-center
+    = link_to "Click here to go to Auditions page", auditions_info_path, class: "btn btn-outline-success"

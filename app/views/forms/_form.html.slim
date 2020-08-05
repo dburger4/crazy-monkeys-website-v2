@@ -7,7 +7,7 @@
         - @auditions.each_with_index do |audition, index|
           div
             = f.radio_button :audition_id, audition.id, value: audition.id, id: "option#{index}", class: "m-2", required: true
-            = f.label :audition_id, value: audition.id, for: "option#{index}", class: "border border-secondary p-1" do
+            = f.label :audition_id, value: audition.id, for: "option#{index}", class: "border border-secondary p-1 radio-inline control-label" do
               = "#{audition.datetime.strftime("%A, %b %e at %l%P")}"
               br = "location: #{audition.location}"
               - if audition.num_forms == 1 ? word = "person" : word = "people" 
@@ -47,6 +47,17 @@
         = f.label "How did you hear about us?", class: "col-form-label"
         = f.text_area :heard_from, rows: 2, class: "form-control", required: true
         small.form-text.text-muted Posters, Word-of-mouth, Social Media, etc.
+      .form-group
+        .form-check
+          input.form-check-input type="checkbox" value="" id="check1" required=""
+          label.form-check-label for="check1"
+            | I agree to show up for the audition slot I selected above
+      .form-group
+        .form-check
+          input.form-check-input type="checkbox" value="" id="check2" required=""
+          label.form-check-label for="check2"
+            | I agree to abide by the Protect Purdue Plan for the duration of my audition
+
       .form-group
         = f.submit "Save Audition Form", class: "btn btn-success btn-block"
 
