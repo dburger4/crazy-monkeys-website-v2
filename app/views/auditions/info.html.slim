@@ -1,16 +1,29 @@
 .page-dark.container.col-lg-6
-  h1.text-center = "#{@auditions.first.semester} Auditions"
-  
-  .card.text-white.bg-danger style="max-width: 35rem;"
-    .card-header COVID-19 Changes to Auditions
-    .card-body
-      h5.card-title Please read: 
-      | text
+  .text-center
+    h1 = "#{@auditions.first.semester} Auditions"
+  .d-flex.justify-content-center
+    .card.text-white.bg-danger.mb-2
+      .card-header COVID-19 Changes to Auditions
+      .card-body.p-2 style="background-color: rgba(0,0,0,0.8);"
+        h5.card-title Please read: 
+        | The safety of everyone involved in auditions is our top priority.
+        |  To continue to allow auditions to happen this semester, we will be using a large, open room
+        |  to help with social distancing and will be sanitizing the entire room between each round of auditions.
+        |  The following rules have been made for anyone interested in auditioning:
+        .ml-2.mt-2
+          strong - Masks must be worn the entire time
+          br
+          strong - A distance of at least 6 feet will be maintained between everyone
+          br
+          strong - You must register online by creating an account and completing an Audition Form
+
   .text-center
     - if current_user&.form.present?
-      = link_to "Click here to edit your Audition Form", edit_form_path(current_user.form.id), class: 'btn btn-primary'
+      = link_to "Click here to edit your Audition Form", edit_form_path(current_user.form.id), class: 'btn btn-primary mb-2'
     - else
-      = link_to "Click here to register for auditions", new_form_path, class: 'btn btn-primary'
+      = link_to "Click here to fill out an Audition Form and begin registration", new_form_path, class: 'btn btn-primary mb-2'
+  .m-3
+  h2 Audition Schedule
   table.table.table-dark.table-striped
     thead
       th style="width: 33%" scope="col" = "Date"
@@ -22,4 +35,73 @@
           td = audition.datetime.strftime("%A, %B %e")
           td = "#{audition.datetime.strftime("%l")}" + " to " + "#{(audition.datetime + 50.minutes).strftime("%l:%M%P")}"
           td = audition.location
-
+  
+  h2 Auditions FAQ
+  #accordion  
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1"
+        .card-header#heading1
+          h5.mb-0.text-white
+            | Do I need any prior improv experience?
+      .collapse.in#collapse1 aria-labelledby="heading1" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | Nope! We have multiple members with no background in improv or theater whatsoever.
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapse6"
+        .card-header#heading6
+          h5.mb-0.text-white
+            | What should I know about improv before auditioning?
+      .collapse.in#collapse6 aria-labelledby="heading6" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | We will teach the 3 basic rules of improv at the beginning of each audition, but they are as follows:
+          br
+          |  1. Say "Yes, and" - Always accept other people's ideas and add onto them
+          br
+          |  2. No denials - Saying "No" can bring any good scene to a halt
+          br
+          |  3. No questions - Asking questions puts the pressure on your scene partner to come up with an answer
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2"
+        .card-header#heading2
+          h5.mb-0.text-white
+            | What are auditions like?
+      .collapse.in#collapse2 aria-labelledby="heading2" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | Most auditions start with simple group games and activities to loosen everyone up.
+          |  Then we will move into doing scene games where you will do improv and act with other people
+          |  who are auditioning as well as member of The Crazy Monkeys themselves
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3"
+        .card-header#heading3
+          h5.mb-0.text-white
+            | Do I need to prepare or bring anything to auditions?
+      .collapse.in#collapse3 aria-labelledby="heading3" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | Nope! No need to prepare anything (besides registering online beforehand). All we ask
+          |  is that you bring lots of energy!
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse4" aria-expanded="true" aria-controls="collapse4"
+        .card-header#heading4
+          h5.mb-0.text-white
+            | Do I need to be funny? / Do you only take the funniest people?
+      .collapse.in#collapse4 aria-labelledby="heading4" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | While a quick wit is helpful, we mainly look for people who can learn quickly, bring good ideas to scenes,
+          |  and work well with their scene partners. Improv is very "team oriented"
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapse5"
+        .card-header#heading5
+          h5.mb-0.text-white
+            | I have auditioned before and didn't get in, can I audition again?
+      .collapse.in#collapse5 aria-labelledby="heading5" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | Yes! And we encourage it. Your previous auditions will have no effect on on future ones.
+    .card.text-white.bg-dark
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapse7"
+        .card-header#heading7
+          h5.mb-0.text-white
+            | Got any other questions?
+      .collapse.in#collapse7 aria-labelledby="heading7" data-parent="#accordion"
+        .card-body.border.border-white.rounded
+          | Email us at thecrazymonkeyscomedy@gmail.com
+    
