@@ -10,10 +10,10 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
       ul.navbar-nav.mr-auto
         li.nav-item
           = link_to "Auditions", auditions_info_path, class: "nav-link"
-        li.nav-item 
-          = link_to "About", "#", class: "nav-link"
-        li.nav-item
-          = link_to "Members", "#", class: "nav-link"
+        / li.nav-item 
+        /   = link_to "About", "#", class: "nav-link"
+        / li.nav-item
+        /   = link_to "Members", "#", class: "nav-link"
       ul.navbar-nav.ml-auto
         - if user_signed_in?
           li.nav-item.dropdown

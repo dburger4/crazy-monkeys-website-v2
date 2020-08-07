@@ -3,12 +3,41 @@ h5#subtitle Purdue University's Premiere Improv Group
 
   h1 Welcome to our new website!
   h5 
-    | Our shows will be performed for an extremely limited audience due to COVID-19,
+    | Our shows will have extremely limited audiences due to COVID-19,
     |  but we will be livestreaming all of them on our Youtube and on this website!
-    |  more information will be coming soon, this website and our social media will be updated with the latest information.
+    |  More info coming soon, this website and our social media will be updated with the latest information.
   br
   h5 
-    | We are hosting auditions in early September! Online registration is required for those interested,
-    | Please visit the Auditions page for more information on how you can register for auditions.
+    | We are hosting auditions in early September! See the Auditions page for more info
   .d-flex.justify-content-center
     = link_to "Click here to go to Auditions page", auditions_info_path, class: "btn btn-outline-success"
+
+.page-dark.container.col-lg-6
+  h1 About us
+  h5
+    | The Crazy Monkeys are an entirely student-run, short-form improv comedy group on Purdue University's campus. 
+    |  We perform free monthly shows completely made up on the spot based on audience suggestions and rely heavily on
+    |  audience participation. Our shows are open to anybody looking to laugh on a weekend, and we have been lucky enough
+    |  to have performed for thousands of students on campus to date.
+  .carousel.slide.border-white.border#carouselIndicators data-ride="carousel"
+    ol.carousel-indicators
+      li.active data-target="#caourselIndicators" data-slide-to="0"
+      li data-target="#caourselIndicators" data-slide-to="1"
+      li data-target="#caourselIndicators" data-slide-to="2"
+      li data-target="#caourselIndicators" data-slide-to="3"
+    .carousel-inner
+      .carousel-item.active
+        = image_tag asset_path('crazy-monkeys-1.jpg'), class: "d-block w-100 img-responsive"
+      .carousel-item
+        = image_tag asset_path('crazy-monkeys-2.jpg'), class: "d-block w-100"
+      .carousel-item
+        = image_tag asset_path('crazy-monkeys-3.JPG'), class: "d-block w-100"
+      .carousel-item
+        = image_tag asset_path('crazy-monkeys-4.JPG'), class: "d-block w-100"
+    a.carousel-control-prev href="#carouselIndicators" role="button" data-slide="prev"
+      span.carousel-control-prev-icon aria-hidden="true"
+      span.sr-only Previous
+    a.carousel-control-next href="#carouselIndicators" role="button" data-slide="next"
+      span.carousel-control-next-icon aria-hidden="true"
+      span.sr-only Next
+
