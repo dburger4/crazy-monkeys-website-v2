@@ -10,12 +10,19 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
       ul.navbar-nav.mr-auto
         li.nav-item
           = link_to "Auditions", auditions_info_path, class: "nav-link"
+        - if current_user&.admin?
+          li.nav-item
+          = link_to "View Submitted forms", forms_path, class: "nav-link"
+
         / li.nav-item 
         /   = link_to "About", "#", class: "nav-link"
         / li.nav-item
         /   = link_to "Members", "#", class: "nav-link"
       ul.navbar-nav.ml-auto
         - if user_signed_in?
+          - if current_user.admin?
+            li.nav-item
+              .nav-link ADMIN
           li.nav-item.dropdown
             = link_to "#{current_user.email}", '#', class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", 'data-toggle': "dropdown", 'aria-haspopup': "true", 'aria-expanded': "false"
             .dropdown-menu aria-labelledby="navbarDropdown"

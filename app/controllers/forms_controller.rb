@@ -2,6 +2,7 @@ class FormsController < ApplicationController
     before_action :authenticate_user!
     before_action :validate_form_id, only: [:edit, :show, :destroy]
     before_action :retrieve_active_auditions, only: [:new, :edit]
+    before_action :admin_only, only: [:index]
 
     def new
       @form = Form.new
@@ -44,6 +45,11 @@ class FormsController < ApplicationController
       redirect_to auditions_info_path
     end
 
+    def index
+      @forms = Form.all
+      @users = User.all
+    end
+
     private
 
     def validate_form_id
@@ -63,6 +69,13 @@ class FormsController < ApplicationController
 
     def retrieve_active_auditions
       @auditions = Audition.active
+    end
+
+    def admin_only
+      if !current_user&.admin?
+        flash[:error] = "You do not have permission to visit this page"
+        redirect_to root_path
+      end
     end
 
 end
