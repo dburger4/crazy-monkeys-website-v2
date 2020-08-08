@@ -33,7 +33,7 @@
       - @auditions.each do |audition|
         tr
           td = audition.datetime.strftime("%A, %B %e")
-          td = "#{audition.datetime.strftime("%l")}" + " to " + "#{(audition.datetime + 50.minutes).strftime("%l:%M%P")}"
+          td = "#{audition.datetime.strftime("%l")}" + " to " + "#{(audition.datetime + audition.duration_in_minutes.minutes).strftime("%l:%M%P")}"
           td = audition.location
   
   h2 Auditions FAQ
