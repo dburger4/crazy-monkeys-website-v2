@@ -3,14 +3,14 @@
     .col-sx
       = link_to "Edit Audition Form", edit_form_path(@form.id), class: 'btn btn-warning mx-2 mt-1'
     .col-sx
-      = link_to "Delete Audition Form", form_path(@form.id), class: "btn btn-danger mx-2 mt-1", method: :delete, data: { confirm: "Deleting this form removes your current audition registration, are you sure?"}
+      = link_to "Delete Audition Form & Registration", form_path(@form.id), class: "btn btn-danger mx-2 mt-1", method: :delete, data: { confirm: "Deleting this form removes your current audition registration, are you sure?"}
 .page.container.col-lg-5
   .row.justify-content-center
     h2.text-center = "#{@form.name}'s #{@form.audition.semester} Audition Form"
   div
     strong Selected audition slot
   .ml-3.mb-3
-    div = @form.audition.datetime.strftime("%A, %b %e at %l%P")
+    div = "#{@form.audition.datetime.strftime("%A, %b %e from %l:%M")} to" + "#{(@form.audition.datetime + @form.audition.duration_in_minutes.minutes).strftime("%l:%M%P")}"
     div = "Location: #{@form.audition.location}"
     
     - if @form.audition.num_forms == 1 ? word = "person" : word = "people" 
