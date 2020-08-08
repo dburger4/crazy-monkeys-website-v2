@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_032059) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
     t.integer "audition_id"
-    t.index "\"auditions_id\"", name: "index_forms_on_auditions_id"
+    t.index ["audition_id"], name: "index_forms_on_audition_id"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
   end
 
