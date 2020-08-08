@@ -13,6 +13,7 @@ class FormsController < ApplicationController
       @form.user = current_user
       @form.email = current_user.email
       if @form.save
+        NewFormMailer.with(test: "1").new_registration_mailer.deliver_now
         flash[:notice] = "Audition Form saved, you are now registered for The Crazy Monkeys Auditions! View or edit by clicking your email dropdown above"
       else
         flash[:error] = "Audition Form could not be saved"
