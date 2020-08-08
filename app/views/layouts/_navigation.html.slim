@@ -28,7 +28,7 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
             .dropdown-menu aria-labelledby="navbarDropdown"
               - if !!current_user.form
                 = link_to 'View Audition Form', form_path(current_user.form.id), class: "dropdown-item"
-                = link_to 'Edit Audition Form', form_path(current_user.form.id), class: "dropdown-item"
+                = link_to 'Edit Audition Form', edit_form_path(current_user.form.id), class: "dropdown-item"
               - else
                 = link_to 'Fill out Audition Form', new_form_path, class: "dropdown-item"
               = link_to 'Log out', destroy_user_session_path, :method => :delete, class: "dropdown-item"
