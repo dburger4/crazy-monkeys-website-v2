@@ -24,6 +24,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'slim-rails'
 gem 'hirb'
+gem 'react-rails'
 
 
 # Use Active Storage variant
