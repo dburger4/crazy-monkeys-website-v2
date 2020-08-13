@@ -6,12 +6,12 @@ class FormsController < ApplicationController
 
     def new
       @form = Form.new
+      @form.email = current_user.email
     end
 
     def create
       @form = Form.new(form_params)
       @form.user = current_user
-      @form.email = current_user.email
       if @form.save
         flash[:notice] = "Audition Form saved, you are now registered for The Crazy Monkeys Auditions! View or edit by clicking your email dropdown above"
       else

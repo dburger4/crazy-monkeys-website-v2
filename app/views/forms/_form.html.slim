@@ -19,6 +19,9 @@
         = f.label "Prefered pronouns", class: "col-form-label"
         = f.text_field :pronouns, class: "form-control", required: true
       .form-group
+        p.col-form-label Confirm your Purdue email (we will need to contact you this way)
+        = f.text_field :email, class: "form-control", required: true
+      .form-group
         = f.label "Phone number", class: "col-form-label"
         = f.text_field :phone, class: "form-control", required: true
       .form-group
@@ -41,23 +44,12 @@
         = f.text_area :skills, rows: 3, class: "form-control", required: true
         small.form-text.text-muted Graphic design, photography, in greek life, tech, etc.
       .form-group
-        = f.label "Are you available Monday and Wednesday 7-9 PM for practices? Please list any conflicts", class: "col-form-label"
+        p.col-form-label Are you available Monday 6-8 PM and Wednesday 7-9 PM for practices? Please list any conflicts"
         = f.text_area :availability, rows: 3, class: "form-control", required: true
       .form-group
         = f.label "How did you hear about us?", class: "col-form-label"
         = f.text_area :heard_from, rows: 2, class: "form-control", required: true
         small.form-text.text-muted Posters, Word-of-mouth, Social Media, etc.
-      .form-group
-        .form-check
-          input.form-check-input type="checkbox" value="" id="check1" required=""
-          label.form-check-label for="check1"
-            | I agree to show up for the audition slot I selected above
-      .form-group
-        .form-check
-          input.form-check-input type="checkbox" value="" id="check2" required=""
-          label.form-check-label for="check2"
-            | I agree to abide by the Protect Purdue Plan for the duration of my audition
-
       .form-group
         = f.submit "Save Audition Form", class: "btn btn-success btn-block"
 
