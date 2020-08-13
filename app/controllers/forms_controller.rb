@@ -45,11 +45,6 @@ class FormsController < ApplicationController
       redirect_to auditions_info_path
     end
 
-    def index
-      @forms = Form.all
-      @users = User.all
-    end
-
     private
 
     def validate_form_id
