@@ -1,0 +1,63 @@
+.page.container.col-lg-5
+  .row.justify-content-center
+    h2.text-center = "#{@form.name}'s #{@form.audition.semester} Audition Form"
+  .d-flex.justify-content-center
+    - if @form.photo.present?
+      = image_tag @form.photo, size: "280", class: "img-fluid"
+  .d-flex.justify-content-center
+    = form_with model: @form, local: true do |f|
+      .form-group
+        = f.file_field :photo
+      
+        = f.submit "Upload photo", class: "btn btn-success btn-sm"
+  div
+    strong Selected audition slot
+  .ml-3.mb-3
+    div = "#{@form.audition.datetime.strftime("%A, %b %e from %l:%M")} to" + "#{(@form.audition.datetime + @form.audition.duration_in_minutes.minutes).strftime("%l:%M%P")}"
+    div = "Location: #{@form.audition.location}"
+    
+    - if @form.audition.num_forms == 1 ? word = "person" : word = "people" 
+      div = "#{@form.audition.num_forms} #{word} registered"
+  div
+    strong Full prefered name
+  .ml-3.mb-3
+    = @form.name
+  div
+    strong Prefered pronouns
+  .ml-3.mb-3
+    = @form.pronouns
+  div
+    strong Phone number
+  .ml-3.mb-3
+    = @form.phone
+  div
+    strong Major
+  .ml-3.mb-3
+    = @form.major
+  div
+    strong Expected graduation date
+  .ml-3.mb-3
+    = @form.graduation
+  div
+    strong List any semesters you won't be on campus
+  .ml-3.mb-3
+    = @form.absent_semesters
+  div
+    strong Do you have any relevant experience?
+  .ml-3.mb-3
+    = @form.experience
+  div
+    strong What extra skills could you bring to the group?
+  .ml-3.mb-3
+    = @form.skills
+  div
+    strong Are you available Monday and Wednesday 7-9 PM for practices? Please list any conflicts
+  .ml-3.mb-3
+    = @form.availability
+  div
+    strong How did you hear about us?
+  .ml-3.mb-3
+    = @form.heard_from
+.row.justify-content-center.d-flex
+  .col-sx
+    = link_to "Delete #{@form.name}'s Audition Form & Registration", member_form_path(@form.id), class: "btn btn-danger m-1", method: :delete, data: { confirm: "This action is permanent, are you sure?"}

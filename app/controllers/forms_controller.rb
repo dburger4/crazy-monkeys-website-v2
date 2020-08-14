@@ -27,12 +27,21 @@ class FormsController < ApplicationController
     def update
       @form = Form.find(params[:id])
 
+      if params[:form][:photo].present? && current_user.admin?
+        if @form.update(form_params)
+          flash[:notice] = "Photo added"
+        else
+          flash[:error] = "Photo could not be added"
+        end
+        redirect_to member_form_path(@form.id) and return
+      end
+
       if @form.update(form_params)
         flash[:notice] = "Audition Form updated and saved"
       else
         flash[:error] = "Could not update and save Audition Form"
       end
-      redirect_to auditions_info_path
+      redirect_to auditions_info_path and return
     end
 
     def show
@@ -48,7 +57,7 @@ class FormsController < ApplicationController
     private
 
     def validate_form_id
-      if params[:id].to_i == current_user.form&.id
+      if params[:id].to_i == current_user.form&.id || current_user.admin?
         @form = Form.find(params[:id])
       else
         flash[:error] = "You can not perform that action"
@@ -59,7 +68,7 @@ class FormsController < ApplicationController
     def form_params
       params.require(:form).permit(:audition_id, :name, :pronouns, :phone, :major, :graduation,
                                    :absent_semesters, :experience, :skills,
-                                   :availability, :heard_from)
+                                   :availability, :heard_from, :photo)
     end
 
     def retrieve_active_auditions

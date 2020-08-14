@@ -1,15 +1,27 @@
 .page
   h1.text-center #{@auditions.first.semester} Applicants
+  #accordion 
+    .card
+      button.btn.btn-link data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapse"
+        .card-header#fullList
+          h4.text-center Click here for alphabetical list
+      .collapse#collapse aria-labelledby="fullList" data-parent="#accordion"
+        .card-body
+          - Form.alphabetical_names.each do |name|
+            = link_to name, member_form_path(Form.find_by(name: name).id)
+            br
   - @auditions.each do |audition|
       h2.text-center #{audition.datetime.strftime("%b %d, %l%p")}
       .row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.row-cols-xl-5
         - @forms.where(audition_id: audition.id).each do |form|
           .col.mb-4
-            .card
-              =image_tag "https://dummyimage.com/400x600/000/fff.jpg", size: "280", class: "card-img-top img-fluid"
-              .audition-pic style="background"
-              .card-body
-                h5.card-title
-                  | #{form.name}
-                p.card-text
-                  | #{form.graduation}
+            =link_to member_form_path(form.id)
+              .card style="color: black;"
+                - if form.photo.present?
+                  = image_tag form.photo, size: "280", class: "card-img-top img-fluid"
+                / =image_tag "https://dummyimage.com/400x600/000/fff.jpg", size: "280", class: "card-img-top img-fluid"
+                .card-body
+                  h5.card-title
+                    | #{form.name}
+                  p.card-text
+                    | Graduates #{form.graduation}

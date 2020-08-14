@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get '/forms/edit/:id', to: 'forms#edit', as: 'forms_edit'
 
   namespace :member do
-    resources :forms, only: [:index]
+    resources :forms, only: [:index, :show, :destroy]
   end
 end
