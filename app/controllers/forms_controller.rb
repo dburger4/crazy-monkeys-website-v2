@@ -68,7 +68,7 @@ class FormsController < ApplicationController
     def form_params
       params.require(:form).permit(:audition_id, :name, :pronouns, :phone, :major, :graduation,
                                    :absent_semesters, :experience, :skills,
-                                   :availability, :heard_from, :photo)
+                                   :availability, :heard_from, :photo, :email)
     end
 
     def retrieve_active_auditions
