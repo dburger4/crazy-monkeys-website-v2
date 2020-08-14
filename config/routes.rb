@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   namespace :member do
     resources :forms, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :destroy]
+    get 'users/toggle_admin/:id', to: 'users#toggle_admin', as: 'user_toggle_admin'
   end
 end
