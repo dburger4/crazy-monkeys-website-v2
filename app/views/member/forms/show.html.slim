@@ -7,7 +7,7 @@
   .d-flex.justify-content-center
     = form_with model: @form, local: true do |f|
       .form-group
-        = f.file_field :photo
+        = f.file_field :photo, required: true
       
         = f.submit "Upload photo", class: "btn btn-success btn-sm"
   div
