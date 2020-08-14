@@ -26,6 +26,7 @@ gem 'slim-rails'
 gem 'hirb'
 gem 'react-rails'
 gem 'dotenv-rails'
+gem 'aws-sdk-s3'
 
 
 # Use Active Storage variant
