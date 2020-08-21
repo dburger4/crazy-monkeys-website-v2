@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_031258) do
+ActiveRecord::Schema.define(version: 2020_08_20_235738) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 2020_08_14_031258) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "welcome_elements", force: :cascade do |t|
+    t.string "title", default: "The Crazy Monkeys"
+    t.text "description", default: "We are Purdue's Premiere Improv Comedy Group"
+    t.boolean "show_image", default: false
+    t.boolean "show_title", default: true
+    t.boolean "show_description", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "livestream_id"
+    t.boolean "show_livestream"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

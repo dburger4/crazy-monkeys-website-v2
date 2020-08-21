@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :forms, only: [:index, :show, :destroy]
     resources :users, only: [:index, :destroy]
     get 'users/toggle_admin/:id', to: 'users#toggle_admin', as: 'user_toggle_admin'
+    get '/', to: 'base#dashboard', as: 'dashboard'
+    resources :welcome_elements, only: [:edit, :update]
   end
 end

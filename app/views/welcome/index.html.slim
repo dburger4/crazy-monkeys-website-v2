@@ -1,20 +1,17 @@
 h5#subtitle Purdue University's Premiere Improv Group
-
-
-/ .embed-responsive.embed-responsive-16by9
-/   iframe.embed-responsive-item src="https://www.youtube.com/embed/#{@videoid}" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=true
-
 .page-dark.container.col-lg-6
-  h1 Welcome to our new website!
-  h5 
-    | Our shows will have extremely limited audiences due to COVID-19,
-    |  but we will be livestreaming all of them on our Youtube and on this website!
-    |  More info coming soon, this website and our social media will be updated with the latest information.
-  br
-  h5 
-    | We are hosting auditions in early September! See the Auditions page for more info
-  .d-flex.justify-content-center
-    = link_to "Click here to go to Auditions page", auditions_info_path, class: "btn btn-outline-success"
+  - if @welcome_element.show_title?
+    h1 = @welcome_element.title
+  - if @welcome_element.show_livestream?
+    .embed-responsive.embed-responsive-16by9
+      iframe class="embed-responsive-item" src="https://www.youtube.com/embed/#{@welcome_element.livestream_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=true
+  
+  - if @welcome_element.show_image?
+    .d-flex.justify-content-center
+      - if @welcome_element.image.present?
+        = image_tag @welcome_element.image, class: "img-fluid"
+  - if @welcome_element.show_description?
+    h5 = @welcome_element.description
 
 .page-dark.container.col-lg-6
   h1 About us

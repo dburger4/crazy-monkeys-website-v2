@@ -1,0 +1,7 @@
+.page.container.col-lg-6
+  h1 Welcome to the Member Dashboard
+  = link_to "View Submitted Forms", member_forms_path
+  br
+  = link_to "View All Users", member_users_path
+  br
+  = link_to "Edit Welcome Element", edit_member_welcome_element_path(@welcome_element)
