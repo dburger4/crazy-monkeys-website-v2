@@ -9,6 +9,8 @@ nav.navbar.navbar-expand-md.fixed-top.navbar-dark.bg-dark
     .navbar-collapse.collapse#navbarSupportedContent
       ul.navbar-nav.mr-auto
         li.nav-item
+          = link_to "Shows", shows_info_path, class: "nav-link"
+        li.nav-item
           = link_to "Auditions", auditions_info_path, class: "nav-link"
         - if current_user&.admin?
           li.nav-item

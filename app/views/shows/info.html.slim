@@ -1,0 +1,23 @@
+.page-dark.container.col-lg-6
+  .text-center
+    h1 FREE COMEDY SHOWS
+  - if @shows_element&.show_title?
+    h2 = @shows_element&.title
+  - if @shows_element&.show_image?
+    .d-flex.justify-content-center
+      - if @shows_element.image.present?
+        = image_tag @shows_element.image, class: "img-fluid"
+  - if @shows_element&.show_description?
+    h5.mt-2 = @shows_element.description
+
+  
+  h2.mt-4 Fall 2020 show schedule
+  table.table.table-dark.table-striped
+    thead
+      th style="width: 50%" scope="col" = "Date & Time"
+      th style="width: 50%" scope="col" = "Location"
+    tbody
+      - @shows.each do |show|
+        tr
+          td = show.datetime.strftime("%A, %B %e at %l:%M%P")
+          td = show.location

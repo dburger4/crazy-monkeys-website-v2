@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_235738) do
+ActiveRecord::Schema.define(version: 2020_08_21_032853) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,25 @@ ActiveRecord::Schema.define(version: 2020_08_20_235738) do
     t.integer "audition_id"
     t.index "\"auditions_id\"", name: "index_forms_on_auditions_id"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.datetime "datetime"
+    t.string "location"
+    t.string "semester"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shows_elements", force: :cascade do |t|
+    t.string "title", default: "Next show:"
+    t.text "description"
+    t.boolean "show_title"
+    t.boolean "show_description"
+    t.boolean "show_image", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

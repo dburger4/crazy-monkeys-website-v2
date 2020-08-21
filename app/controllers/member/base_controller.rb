@@ -5,6 +5,7 @@ module Member
 
     def dashboard
       @welcome_element = WelcomeElement.first
+      @shows_element = ShowsElement.first
     end
 
     private

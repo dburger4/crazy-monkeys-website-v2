@@ -1,0 +1,29 @@
+.page.container.col-lg-6
+  h3 Upload the next show's digital poster here to have it show on the Shows page of the website
+  = form_with model: @shows_element, url: member_shows_element_path(@shows_element), local: true do |f|
+    .form-group
+      = f.label "Image:", class: "mr-2"
+      br
+      - if @shows_element.image.present?
+        = image_tag @shows_element.image, class: "img-fluid", size: "300"
+      br
+      = f.file_field :image
+    .form-group
+      = f.label "Title"
+      = f.text_field :title, class: "form-control"
+    .form_group
+      = f.label "Description"
+      = f.text_area :description, class: "form-control", rows: 5
+    .form_group.mt-2
+      br
+      = f.check_box :show_title
+      = f.label "Show title"
+      br
+      = f.check_box :show_image
+      = f.label "Show image"
+      br
+      = f.check_box :show_description
+      = f.label "Show description"
+    .form-group
+      = f.submit "Save Shows Elements", class: "btn btn-success mt-2"
+    
