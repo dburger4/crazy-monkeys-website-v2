@@ -1,40 +1,41 @@
 .d-flex.justify-content-center
   .page.col-6 style="min-width: 500px;"
     h3 All current accounts made on this website
-    table.table.table-striped
-      thead
-        tr
-          th scope="col"
-            strong Id
-          th scope="col"
-            strong Email
-          th scope="col"
-            strong Audition Form
-          th scope="col"
-            strong Admin
-          th scope="col"
-            strong Actions
-      tbody
-        - @users.each do |user|
+    .table-responsive
+      table.table.table-striped
+        thead
           tr
-            th scope="row" = user.id
-            td = user.email
-            td 
-              -if user.form
-                = link_to "View form", member_form_path(user.form.id)
-              - else
-                | no form
-            td 
-              - if user.admin? 
-                h5.m-0
-                  span.badge.badge-success ADMIN
-              - else
-                h5.m-0
-                  span.badge.badge-secondary NOT ADMIN
+            th scope="col"
+              strong Id
+            th scope="col"
+              strong Email
+            th scope="col"
+              strong Audition Form
+            th scope="col"
+              strong Admin
+            th scope="col"
+              strong Actions
+        tbody
+          - @users.each do |user|
+            tr
+              th scope="row" = user.id
+              td = user.email
+              td 
+                -if user.form
+                  = link_to "View form", member_form_path(user.form.id)
+                - else
+                  | no form
+              td 
+                - if user.admin? 
+                  h5.m-0
+                    span.badge.badge-success ADMIN
+                - else
+                  h5.m-0
+                    span.badge.badge-secondary NOT ADMIN
 
-            td
-              - if user.admin?
-                = link_to "Remove admin", member_user_toggle_admin_path(user.id), class: "btn btn-sm btn-secondary mr-1"
-              - else
-                = link_to "Make admin", member_user_toggle_admin_path(user.id), class: "btn btn-sm btn-warning mr-1", data: { confirm: "Admin status gives user permission to access and edit important data, are you sure?"}
-              = link_to "Delete user", member_user_path(user.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "This user's account and audition registration will be deleted, are you sure?"}
+              td
+                - if user.admin?
+                  = link_to "Remove admin", member_user_toggle_admin_path(user.id), class: "btn btn-sm btn-secondary mr-1"
+                - else
+                  = link_to "Make admin", member_user_toggle_admin_path(user.id), class: "btn btn-sm btn-warning mr-1", data: { confirm: "Admin status gives user permission to access and edit important data, are you sure?"}
+                = link_to "Delete user", member_user_path(user.id), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "This user's account and audition registration will be deleted, are you sure?"}
