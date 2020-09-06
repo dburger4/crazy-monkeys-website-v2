@@ -10,8 +10,9 @@ h5#subtitle Purdue University's Premiere Improv Group
     .d-flex.justify-content-center
       - if @welcome_element.image.present?
         = image_tag @welcome_element.image, class: "img-fluid mt-2"
-  .d-flex.justify-content-center
-    = link_to "Click here to take our Show Survey!", 'https://forms.gle/Ec4LhnM1cVtVZpiz5', class: "btn btn-primary mt-2", target: :_blank
+  // TODO: make this an editable welcome element
+  / .d-flex.justify-content-center
+  /   = link_to "Click here to take our Show Survey!", 'https://forms.gle/Ec4LhnM1cVtVZpiz5', class: "btn btn-primary mt-2", target: :_blank
   - if @welcome_element&.show_description?
     h5.mt-2 = @welcome_element.description
 
