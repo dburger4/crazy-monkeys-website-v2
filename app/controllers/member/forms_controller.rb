@@ -26,7 +26,7 @@ module Member
     private
 
     def form_params
-      params.require(:form).permit(:photo)
+      params.require(:form).permit(:photo, :notes, :decision)
     end
 
   end
