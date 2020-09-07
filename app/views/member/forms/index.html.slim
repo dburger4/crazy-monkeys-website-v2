@@ -16,7 +16,11 @@
         - @forms.where(audition_id: audition.id).each do |form|
           .col.mb-4
             =link_to member_form_path(form.id)
-              .card style="color: black;"
+              - decision_color = ["dark", "danger", "warning", "primary", "success"]
+              .card.text-light[class= "bg-#{decision_color[form.decision.to_i]}"]
+                .card-header
+                  - decision = Decision.find_by(int_option: form.decision)
+                  = decision&.option
                 - if form.photo.present?
                   = image_tag form.photo, size: "280", class: "card-img-top img-fluid"
                 / =image_tag "https://dummyimage.com/400x600/000/fff.jpg", size: "280", class: "card-img-top img-fluid"

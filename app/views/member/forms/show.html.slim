@@ -1,4 +1,5 @@
 .page.container.col-lg-5
+  = link_to "Return to Auditions list", member_forms_path, class: "btn btn-outline-primary btn-sm mb-2"
   .row.justify-content-center
     h2.text-center = "#{@form.name}'s #{@form.audition.semester} Audition Form"
   .d-flex.justify-content-center
@@ -10,6 +11,18 @@
         = f.file_field :photo, required: true
       
         = f.submit "Upload photo", class: "btn btn-success btn-sm"
+  div
+    = form_with model: @form, local: true do |f|
+      .form-group
+        = f.label "Audition notes:", class: "col-form-label"
+        = f.text_area :notes, rows: 7, class: "form-control"
+        = f.submit "Save notes", class: "btn btn-success btn-sm mt-2"
+  div
+    = form_with model: @form, local: true do |f|
+      .form-group
+        = f.label "Audition decision:", class: "col-form-label mr-2"
+        = f.collection_select :decision, Decision.all, :int_option, :option
+        = f.submit "Save decision", class: "btn btn-success btn-sm ml-2"
   div
     strong Selected audition slot
   .ml-3.mb-3

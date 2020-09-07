@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_032853) do
+ActiveRecord::Schema.define(version: 2020_09_07_034500) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_08_21_032853) do
     t.integer "duration_in_minutes"
   end
 
+  create_table "decisions", force: :cascade do |t|
+    t.string "option"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "int_option"
+  end
+
   create_table "forms", force: :cascade do |t|
     t.string "name"
     t.string "pronouns"
@@ -59,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_08_21_032853) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
     t.integer "audition_id"
+    t.text "notes"
+    t.string "decision", default: "0"
     t.index "\"auditions_id\"", name: "index_forms_on_auditions_id"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
   end

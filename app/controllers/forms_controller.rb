@@ -36,6 +36,26 @@ class FormsController < ApplicationController
         redirect_to member_form_path(@form.id) and return
       end
 
+      if params[:form][:notes].present? && current_user.admin?
+        if @form.update(form_params)
+          flash[:notice] = "Audition form updated"
+        else
+          flash[:error] = "Audition form could not be updated"
+        end
+        redirect_to member_form_path(@form.id) and return
+      end
+
+      if params[:form][:decision].present? && current_user.admin?
+        if @form.update(form_params)
+          flash[:notice] = "Decision updated"
+        else
+          flash[:error] = "Decision could not be updated"
+        end
+        redirect_to member_forms_path and return
+      end
+
+      
+
       if @form.update(form_params)
         flash[:notice] = "Audition Form updated and saved"
       else
@@ -68,7 +88,7 @@ class FormsController < ApplicationController
     def form_params
       params.require(:form).permit(:audition_id, :name, :pronouns, :phone, :major, :graduation,
                                    :absent_semesters, :experience, :skills,
-                                   :availability, :heard_from, :photo, :email)
+                                   :availability, :heard_from, :photo, :email, :notes, :decision)
     end
 
     def retrieve_active_auditions
