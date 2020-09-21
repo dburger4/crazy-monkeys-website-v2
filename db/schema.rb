@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_09_07_034500) do
     t.string "email"
     t.integer "audition_id"
     t.text "notes"
-    t.string "decision", default: "0"
-    t.index "\"auditions_id\"", name: "index_forms_on_auditions_id"
+    t.integer "decision", default: 0
+    t.index ["audition_id"], name: "index_forms_on_audition_id"
     t.index ["user_id"], name: "index_forms_on_user_id", unique: true
   end
 
