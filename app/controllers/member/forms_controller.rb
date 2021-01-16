@@ -4,7 +4,7 @@ module Member
     def index
       @forms = Form.all
       @users = User.all
-      @auditions = Audition.all
+      @auditions = Audition.active
     end
 
     def show
