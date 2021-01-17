@@ -7,8 +7,9 @@
           h4.text-center Click here for alphabetical list
       .collapse#collapse aria-labelledby="fullList" data-parent="#accordion"
         .card-body
-          - Form.where(:user_id,)alphabetical_names.each do |name|
-            = link_to name, member_form_path(Form.find_by(name: name).id)
+          - Form.alphabetical_names.each do |name|
+            - if Form.find_by(name: name).user_id != nil
+              = link_to name, member_form_path(Form.find_by(name: name).id)
             br
   - @auditions.each do |audition|
       h2.text-center #{audition.datetime.strftime("%b %d, %l%p")}
