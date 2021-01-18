@@ -11,10 +11,10 @@
     h5.mt-2 = @shows_element.description
   // TODO: turn into a show element
   .d-flex.justify-content-center
-    = link_to "Click here to enter the in person raffle", 'https://forms.gle/XP919rfx22wuoZNC9', class: "btn btn-primary", target: :_blank
+    = link_to "Click here to enter the in person raffle", 'https://docs.google.com/forms/d/e/1FAIpQLScTp6v7ybLPTeAdsnUtWpTzpwwMHo9MyAYXQVsxON9oPIFqwA/viewform', class: "btn btn-primary", target: :_blank
 
   
-  h2.mt-4 Fall 2020 show schedule
+  h2.mt-4 #{@shows.first.semester} show schedule 
   table.table.table-dark.table-striped
     thead
       th style="width: 50%" scope="col" = "Date & Time"

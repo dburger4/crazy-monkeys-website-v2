@@ -12,7 +12,7 @@
               = link_to name, member_form_path(Form.find_by(name: name).id)
             br
   - @auditions.each do |audition|
-      h2.text-center #{audition.datetime.strftime("%b %d, %l%p")}
+      h2.text-center #{audition.datetime.strftime("%b %d, %l:%M%p")}
       .row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.row-cols-xl-5
         - @forms.where(audition_id: audition.id).each do |form|
           .col.mb-4
